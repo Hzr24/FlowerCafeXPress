@@ -52,7 +52,7 @@ FlowerCaféXpress is a smart, robust, and intuitive web-based food ordering syst
    * Import the provided SQL schema from `database/schema.sql` to set up the tables and default administrator account.
 
 4. **Configuration**
-   Open `dbconn.php` in the root directory and ensure the database credentials match your local setup:
+   Copy the `dbconn.example.php` file and rename it to `dbconn.php`. Open it and ensure the database credentials match your local setup:
    ```php
    $host = "localhost";
    $username = "root";  // default for XAMPP

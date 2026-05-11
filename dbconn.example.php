@@ -1,4 +1,5 @@
 <?php
+// Rename this file to dbconn.php and update with your actual database credentials
 $host = "localhost";       // or your DB host
 $username = "root";        // your DB username
 $password = "";            // your DB password

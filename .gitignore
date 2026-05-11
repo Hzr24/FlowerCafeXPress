@@ -25,3 +25,6 @@ uploads/*
 
 # Log files
 *.log
+
+# Database Connection File
+dbconn.php
