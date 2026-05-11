@@ -1,0 +1,43 @@
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #f0f0f0 !important;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .table {
+  color: #fff;
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .table th,
+body.dark-mode .table td {
+  border-color: #444;
+}
+
+body.dark-mode .thead-dark th {
+  background-color: #333 !important;
+  color: #fff;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .navbar-light {
+  background-color: #1e1e1e !important;
+}
+
+body.dark-mode .nav-link {
+  color: #f0f0f0 !important;
+}
+
+body.dark-mode .btn-dark {
+  background-color: #333;
+  border-color: #333;
+}
+
+body.dark-mode .form-control {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border-color: #444;
+}
+
+
+
