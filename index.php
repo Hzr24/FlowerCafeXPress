@@ -2,6 +2,7 @@
 session_start();
 include "dbconn.php";
 ?>
+<?php $base_path = ''; ?>
 
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
@@ -13,7 +14,7 @@ include "dbconn.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-    <title>FlowerCaféXpress</title>  
+    <title>FlowerCafÃ©Xpress</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -52,10 +53,10 @@ include "dbconn.php";
                 <div class="collapse navbar-collapse" id="navbars-rs-food">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="menu.php">Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.php">Gallery</a></li>
-						<li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/menu.php">Menu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/about.php">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/gallery.php">Gallery</a></li>
+						<li class="nav-item"><a class="nav-link" href="pages/contact.php">Contact</a></li>
                         <?php if (!isset($_SESSION['role'])): ?>
                             <!-- Guest: show login/signup -->
                             <li class="nav-item">
@@ -67,11 +68,11 @@ include "dbconn.php";
                         <?php else: ?>
                             <!-- Logged-in: show logout -->
                             <li class="nav-item">
-                                <a class="nav-link" href="logout.php">Logout</a>
+                                <a class="nav-link" href="api/logout.php">Logout</a>
                             </li>
 
 							<?php if ($_SESSION['role'] === 'customer'): ?>
-								<li class="nav-item"><a class="nav-link" href="customer_profile.php">My Profile</a></li>
+								<li class="nav-item"><a class="nav-link" href="pages/customer_profile.php">My Profile</a></li>
 							<?php endif; ?>
 
                             <?php if ($_SESSION['role'] === 'staff'): ?>
@@ -81,7 +82,7 @@ include "dbconn.php";
                                 <li class="nav-item"><a class="nav-link btn btn-danger text-white ml-2" href="admin/admin_dashboard.php">Admin Panel</a></li>
                             <?php endif; ?>
                         <?php endif; ?>
-						<button id="darkModeToggle" class="btn btn-dark btn-sm px-2 py-1" style="font-size: 0.9rem; line-height: 1;">🌓</button>
+						<button id="darkModeToggle" class="btn btn-dark btn-sm px-2 py-1" style="font-size: 0.9rem; line-height: 1;">ðŸŒ“</button>
                     </ul>
                 </div>
             </div>
@@ -97,7 +98,7 @@ include "dbconn.php";
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> FlowerCaféXpress</strong></h1>
+							<h1 class="m-b-20"><strong>Welcome To <br> FlowerCafÃ©Xpress</strong></h1>
 						</div>
 					</div>
 				</div>
@@ -107,7 +108,7 @@ include "dbconn.php";
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> FlowerCaféXpress</strong></h1>
+							<h1 class="m-b-20"><strong>Welcome To <br> FlowerCafÃ©Xpress</strong></h1>
 						</div>
 					</div>
 				</div>
@@ -117,7 +118,7 @@ include "dbconn.php";
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> FlowerCaféXpress</strong></h1>
+							<h1 class="m-b-20"><strong>Welcome To <br> FlowerCafÃ©Xpress</strong></h1>
 						</div>
 					</div>
 				</div>
@@ -139,14 +140,14 @@ include "dbconn.php";
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12 text-center">
 					<div class="inner-column">
-						<h1>Welcome To <span>FlowerCaféXpress</span></h1>
+						<h1>Welcome To <span>FlowerCafÃ©Xpress</span></h1>
 						<h4>Little Introduction</h4>
-						<p>FlowerCaféXpress is a smart and economical food  system designed to connect customers 
+						<p>FlowerCafÃ©Xpress is a smart and economical food  system designed to connect customers 
 							with the university's cafe so that the customer can see the menu and place an order. 
 							The system supports three main user roles; customers, cafe owner, 
 							cafe workers with tailor-made features for managing orders, marking order status, and monitoring operations. 
 							Innovatively engineered to simulate an actual food ordering system, 
-							FlowerCaféXpress focuses on intuitive user interfaces and accurate ordering with the assurance 
+							FlowerCafÃ©Xpress focuses on intuitive user interfaces and accurate ordering with the assurance 
 							that the backend would seamlessly process many orders simultaneously. </p>
 					</div>
 				</div>
@@ -225,13 +226,13 @@ include "dbconn.php";
 	</div>
 	<!-- End Customer Reviews -->
 	
-	<?php include 'contact_info.php'; ?>
-	<?php include 'footer.php'; ?>
+	<?php include 'includes/contact_info.php'; ?>
+	<?php include 'includes/footer.php'; ?>
 	
 	<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
-	<?php include 'scripts.php'; ?>
-	<?php include 'modals.php'; ?>
+	<?php include 'includes/scripts.php'; ?>
+	<?php include 'includes/modals.php'; ?>
 	<script src="js/auth.js"></script>
 </body>
 </html>

@@ -24,7 +24,7 @@ $orders = $conn->query($sql);
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.php">
-                <img src="images/logo flowercafexpress.png" alt="" />
+                <img src="../images/logo flowercafexpress.png" alt="" />
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food">
                 <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@ $orders = $conn->query($sql);
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="order_history.php">Order History</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../api/logout.php">Logout</a></li>
                     <button id="darkModeToggle" class="btn btn-dark btn-sm px-2 py-1" style="font-size: 0.9rem; line-height: 1;">🌓</button>
                 </ul>
             </div>
@@ -131,3 +131,4 @@ function updateStatus(orderId, newStatus) {
 
 </body>
 </html>
+

@@ -3,7 +3,7 @@
             e.preventDefault();
             const formData = new FormData(this);
 
-            fetch('login.php', {
+            fetch(window.BASE_PATH + 'api/login.php', {
                 method: 'POST',
                 body: formData,
                 credentials: 'include' // Include session!
@@ -13,7 +13,7 @@
                 if (data.success) {
                     $('#loginModal').modal('hide');
                     const role = data.role;
-                    window.location.href = 'index.php';
+                    window.location.href = window.BASE_PATH + 'index.php';
                 } else {
                     alert('Login failed: ' + data.message);
                 }
@@ -29,7 +29,7 @@
             e.preventDefault();
             const formData = new FormData(this);
 
-            fetch('register.php', {
+            fetch(window.BASE_PATH + 'api/register.php', {
                 method: 'POST',
                 body: formData,
                 credentials: 'include'
@@ -56,7 +56,7 @@
 
             const formData = new FormData(this);
 
-            fetch('admin/add_menu_item.php', {
+            fetch(window.BASE_PATH + 'admin/add_menu_item.php', {
                 method: 'POST',
                 body: formData,
                 credentials: 'include'
@@ -85,7 +85,7 @@
 
     // Function to load menu items dynamically
         function loadMenuItems() {
-            fetch('menu_list.php')
+            fetch(window.BASE_PATH + 'includes/menu_list.php')
                 .then(res => res.text())
                 .then(html => {
                     document.getElementById('menuItemsContainer').innerHTML = html;
@@ -110,7 +110,7 @@
         e.preventDefault();
         const formData = new FormData(this);
 
-        fetch('admin/update_menu_item.php', {
+        fetch(window.BASE_PATH + 'admin/update_menu_item.php', {
             method: 'POST',
             body: formData,
             credentials: 'include'
