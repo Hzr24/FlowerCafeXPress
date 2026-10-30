@@ -18,4 +18,3 @@ if ($stmt->execute()) {
 } else {
     die("Failed to delete user.");
 }
-

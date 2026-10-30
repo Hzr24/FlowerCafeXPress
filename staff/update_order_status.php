@@ -16,4 +16,3 @@ $success = $stmt->execute();
 $stmt->close();
 
 echo json_encode(['success' => $success]);
-

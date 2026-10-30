@@ -32,7 +32,7 @@ $result = $conn->query($sql);
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.php">
-                <img src="../images/logo flowercafexpress.png" alt="" />
+                <img src="images/logo flowercafexpress.png" alt="" />
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food">
                 <span class="navbar-toggler-icon"></span>
@@ -41,7 +41,7 @@ $result = $conn->query($sql);
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="staff_dashboard.php">Staff Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../api/logout.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -90,4 +90,3 @@ $result = $conn->query($sql);
 
 </body>
 </html>
-

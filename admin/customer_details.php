@@ -32,7 +32,7 @@ $result = $conn->query("SELECT * FROM customer_details WHERE role = 'customer' O
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="index.php">
-        <img src="../images/logo flowercafexpress.png" alt="" />
+        <img src="images/logo flowercafexpress.png" alt="" />
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food">
         <span class="navbar-toggler-icon"></span>
@@ -41,7 +41,7 @@ $result = $conn->query("SELECT * FROM customer_details WHERE role = 'customer' O
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="admin_dashboard.php">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="../api/logout.php">Logout</a></li>
+          <li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
           <button id="darkModeToggle" class="btn btn-dark btn-sm px-2 py-1">🌓</button>
         </ul>
       </div>
@@ -109,4 +109,3 @@ $result = $conn->query("SELECT * FROM customer_details WHERE role = 'customer' O
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

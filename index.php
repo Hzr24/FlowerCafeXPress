@@ -2,7 +2,6 @@
 session_start();
 include "dbconn.php";
 ?>
-<?php $base_path = ''; ?>
 
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
@@ -14,7 +13,7 @@ include "dbconn.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-    <title>FlowerCafÃ©Xpress</title>  
+    <title>FlowerCaféXpress</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -40,55 +39,7 @@ include "dbconn.php";
 </head>
 
 <body>
-    <!-- Start header -->
-    <header class="top-navbar">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="index.php">
-                    <img src="images/logo flowercafexpress.png" alt="" />
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbars-rs-food">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pages/menu.php">Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pages/about.php">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pages/gallery.php">Gallery</a></li>
-						<li class="nav-item"><a class="nav-link" href="pages/contact.php">Contact</a></li>
-                        <?php if (!isset($_SESSION['role'])): ?>
-                            <!-- Guest: show login/signup -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="modal" data-target="#registerModal">Sign Up</a>
-                            </li>
-                        <?php else: ?>
-                            <!-- Logged-in: show logout -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="api/logout.php">Logout</a>
-                            </li>
-
-							<?php if ($_SESSION['role'] === 'customer'): ?>
-								<li class="nav-item"><a class="nav-link" href="pages/customer_profile.php">My Profile</a></li>
-							<?php endif; ?>
-
-                            <?php if ($_SESSION['role'] === 'staff'): ?>
-                                <li class="nav-item"><a class="nav-link btn btn-warning text-white ml-2" href="staff/staff_dashboard.php">Staff Panel</a></li>
-                            <?php endif; ?>
-                            <?php if ($_SESSION['role'] === 'admin'): ?>
-                                <li class="nav-item"><a class="nav-link btn btn-danger text-white ml-2" href="admin/admin_dashboard.php">Admin Panel</a></li>
-                            <?php endif; ?>
-                        <?php endif; ?>
-						<button id="darkModeToggle" class="btn btn-dark btn-sm px-2 py-1" style="font-size: 0.9rem; line-height: 1;">ðŸŒ“</button>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <!-- End header -->
+    <?php $base_path = ''; include 'includes/header.php'; ?>
 	
 	<!-- Start slides -->
 	<div id="slides" class="cover-slides">
@@ -98,7 +49,7 @@ include "dbconn.php";
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> FlowerCafÃ©Xpress</strong></h1>
+							<h1 class="m-b-20"><strong>Welcome To <br> FlowerCaféXpress</strong></h1>
 						</div>
 					</div>
 				</div>
@@ -108,7 +59,7 @@ include "dbconn.php";
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> FlowerCafÃ©Xpress</strong></h1>
+							<h1 class="m-b-20"><strong>Welcome To <br> FlowerCaféXpress</strong></h1>
 						</div>
 					</div>
 				</div>
@@ -118,7 +69,7 @@ include "dbconn.php";
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> FlowerCafÃ©Xpress</strong></h1>
+							<h1 class="m-b-20"><strong>Welcome To <br> FlowerCaféXpress</strong></h1>
 						</div>
 					</div>
 				</div>
@@ -140,14 +91,14 @@ include "dbconn.php";
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12 text-center">
 					<div class="inner-column">
-						<h1>Welcome To <span>FlowerCafÃ©Xpress</span></h1>
+						<h1>Welcome To <span>FlowerCaféXpress</span></h1>
 						<h4>Little Introduction</h4>
-						<p>FlowerCafÃ©Xpress is a smart and economical food  system designed to connect customers 
+						<p>FlowerCaféXpress is a smart and economical food  system designed to connect customers 
 							with the university's cafe so that the customer can see the menu and place an order. 
 							The system supports three main user roles; customers, cafe owner, 
 							cafe workers with tailor-made features for managing orders, marking order status, and monitoring operations. 
 							Innovatively engineered to simulate an actual food ordering system, 
-							FlowerCafÃ©Xpress focuses on intuitive user interfaces and accurate ordering with the assurance 
+							FlowerCaféXpress focuses on intuitive user interfaces and accurate ordering with the assurance 
 							that the backend would seamlessly process many orders simultaneously. </p>
 					</div>
 				</div>
@@ -233,6 +184,5 @@ include "dbconn.php";
 
 	<?php include 'includes/scripts.php'; ?>
 	<?php include 'includes/modals.php'; ?>
-	<script src="js/auth.js"></script>
 </body>
 </html>

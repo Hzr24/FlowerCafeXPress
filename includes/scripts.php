@@ -25,16 +25,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const prefersDark = localStorage.getItem('theme') === 'dark';
   if (prefersDark) {
     document.body.classList.add('dark-mode');
-    toggleBtn.innerHTML = 'ðŸŒž';
+    toggleBtn.innerHTML = '☀️';
   }
 
   toggleBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
-    toggleBtn.innerHTML = isDark ? 'ðŸŒž' : 'ðŸŒ™';
+    toggleBtn.innerHTML = isDark ? '☀️' : '🌓';
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   });
 });
 </script>
-
-
