@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS `flowercafe_db`;
+﻿CREATE DATABASE IF NOT EXISTS `flowercafe_db`;
 USE `flowercafe_db`;
 
 -- --------------------------------------------------------
@@ -64,4 +64,4 @@ CREATE TABLE IF NOT EXISTS `order_details` (
 -- Note: Replace the hash below with an actual password_hash() output if you modify it.
 -- --------------------------------------------------------
 INSERT INTO `customer_details` (`name`, `email`, `password`, `phone`, `role`) VALUES
-('Administrator', 'admin@flowercafe.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '0123456789', 'admin');
+('Administrator', 'admin@flowercafe.com', '$2y$10$39koOKeCq8QlEaqgkNo5He1cpiZnW9P.D.vB661srzg59VisbkKI.', '0123456789', 'admin');

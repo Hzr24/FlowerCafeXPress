@@ -257,7 +257,7 @@ require_once "../dbconn.php";
 
 <?php include '../includes/scripts.php'; ?>
 <?php include '../includes/modals.php'; ?>
-<script src="../js/auth.js"></script>
+
 
 
 <!-- Success/Error Modal -->

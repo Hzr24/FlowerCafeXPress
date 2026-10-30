@@ -1,4 +1,7 @@
 <!-- JS FILES -->
+<script>
+  window.BASE_PATH = '<?= $base_path ?? "" ?>';
+</script>
 <script src="<?= $base_path ?>js/jquery-3.2.1.min.js"></script>
 <script src="<?= $base_path ?>js/popper.min.js"></script>
 <script src="<?= $base_path ?>js/bootstrap.min.js"></script>

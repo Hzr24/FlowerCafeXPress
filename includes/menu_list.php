@@ -1,12 +1,21 @@
 <?php
-require_once "dbconn.php";
+require_once __DIR__ . '/../dbconn.php';
+
+$base_path = $base_path ?? '';
 
 $result = $conn->query("SELECT * FROM menu_details ORDER BY item_id DESC");
 
 if ($result && $result->num_rows > 0):
     while ($item = $result->fetch_assoc()):
         $category = htmlspecialchars($item['category'] ?? '');
-        $image_url = htmlspecialchars($item['image_url'] ?? 'images/default.jpg');
+        $raw_image_url = $item['image_url'] ?? 'images/default.jpg';
+        $image_url = htmlspecialchars($raw_image_url);
+        if (!preg_match('/^(https?:\/\/|\/)/', $image_url)) {
+            $img_src = $base_path . $image_url;
+        } else {
+            $img_src = $image_url;
+        }
+
         $name = htmlspecialchars($item['name'] ?? 'Unnamed');
         $description = htmlspecialchars($item['description'] ?? '');
         $raw_price = $item['price'] ?? 0;
@@ -19,7 +28,7 @@ if ($result && $result->num_rows > 0):
     <div class="col-lg-4 col-md-6 special-grid <?= $category ?>">
         <!-- Tooltip added here -->
         <div class="gallery-single fix" title="Status: <?= $available ?>">
-            <img src="<?= $image_url ?>" class="img-fluid" alt="<?= $name ?>">
+            <img src="<?= $img_src ?>" class="img-fluid" alt="<?= $name ?>">
             <div class="why-text">
                 <h4><?= $name ?></h4>
                 <p><?= $description ?></p>
