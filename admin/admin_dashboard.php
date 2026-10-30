@@ -1,92 +1,123 @@
 <?php
+$base_path = '../';
 include '../check_access.php';
 require_role(['admin']); // Ensure admin only
 ?>
 
-<header class="top-navbar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <img src="images/logo flowercafexpress.png" alt="" />
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbars-rs-food">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
-                    <button id="darkModeToggle" class="btn btn-dark btn-sm px-2 py-1" style="font-size: 0.9rem; line-height: 1;">🌓</button>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .dashboard-card {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      border-radius: 10px;
-    }
-    .dashboard-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
-    .card-title {
-      font-size: 1.25rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard - FlowerCaféXpress</title>
+
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <style>
+        .dashboard-card {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border-radius: var(--fc-radius-md) !important;
+            height: 100%;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--fc-shadow-lg) !important;
+        }
+        .icon-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+            background: var(--fc-primary-light);
+            color: var(--fc-primary);
+        }
+    </style>
 </head>
 <body>
-  <div class="container mt-5">
-    <h2 class="mb-4 text-center">🌟 Admin Dashboard</h2>
+    <?php include '../includes/header.php'; ?>
 
-    <div class="row">
-      <div class="col-md-6 col-lg-4 mb-4">
-        <a href="customer_details.php" class="text-decoration-none text-dark">
-          <div class="card dashboard-card shadow-sm p-3">
-            <div class="card-body text-center">
-              <h5 class="card-title">👤 Manage Users</h5>
-              <p class="card-text">View, edit roles, or delete customer accounts.</p>
+    <div class="all-page-title page-breadcrumb">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Admin Control Center</h1>
+                </div>
             </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="col-md-6 col-lg-4 mb-4">
-        <a href="manage_staff.php" class="text-decoration-none text-dark">
-          <div class="card dashboard-card shadow-sm p-3">
-            <div class="card-body text-center">
-              <h5 class="card-title">👨‍🍳 Manage Staff</h5>
-              <p class="card-text">Register, view or manage staff accounts.</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="col-md-6 col-lg-4 mb-4">
-        <a href="generate_reports.php" class="text-decoration-none text-dark">
-          <div class="card dashboard-card shadow-sm p-3">
-            <div class="card-body text-center">
-              <h5 class="card-title">📊 Generate Reports</h5>
-              <p class="card-text">Create and download reports on system performance.</p>
-            </div>
-          </div>
-        </a>
-      </div>
+        </div>
     </div>
-  </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="container py-5">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+            <div>
+                <h2 class="font-weight-bold mb-1">Overview & Management</h2>
+                <p class="text-muted mb-0">Manage customer accounts, staff privileges, and view cafe reports.</p>
+            </div>
+            <div class="mt-3 mt-sm-0">
+                <a href="../pages/menu.php" class="btn btn-outline-theme">
+                    <i class="fa fa-cutlery mr-1"></i> View Live Menu
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mb-4">
+                <a href="customer_details.php" class="text-decoration-none">
+                    <div class="card dashboard-card shadow-sm p-3">
+                        <div class="card-body text-center">
+                            <div class="icon-circle">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <h5 class="card-title font-weight-bold">Manage Customers</h5>
+                            <p class="card-text">View customer lists, edit roles, search registered student accounts, or delete profiles.</p>
+                            <span class="btn btn-sm btn-outline-theme mt-2">Open Customers &rarr;</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4">
+                <a href="manage_staff.php" class="text-decoration-none">
+                    <div class="card dashboard-card shadow-sm p-3">
+                        <div class="card-body text-center">
+                            <div class="icon-circle">
+                                <i class="fa fa-user-plus"></i>
+                            </div>
+                            <h5 class="card-title font-weight-bold">Manage Staff</h5>
+                            <p class="card-text">Register new kitchen or counter staff, monitor credentials, and update staff permissions.</p>
+                            <span class="btn btn-sm btn-outline-theme mt-2">Manage Staff &rarr;</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4">
+                <a href="generate_reports.php" class="text-decoration-none">
+                    <div class="card dashboard-card shadow-sm p-3">
+                        <div class="card-body text-center">
+                            <div class="icon-circle">
+                                <i class="fa fa-line-chart"></i>
+                            </div>
+                            <h5 class="card-title font-weight-bold">Sales & Reports</h5>
+                            <p class="card-text">Generate comprehensive revenue breakdown, dish sales analytics, and printable daily reports.</p>
+                            <span class="btn btn-sm btn-outline-theme mt-2">View Reports &rarr;</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <?php include '../includes/footer.php'; ?>
+    <?php include '../includes/scripts.php'; ?>
 </body>
 </html>

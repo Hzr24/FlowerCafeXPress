@@ -1,4 +1,5 @@
 <?php
+$base_path = '../';
 require_once "../dbconn.php";
 require_once "../check_access.php";
 require_role(['admin']);
@@ -68,157 +69,216 @@ $result = $conn->query("
 ");
 ?>
 
-<header class="top-navbar">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="index.php">
-        <img src="images/logo flowercafexpress.png" alt="" />
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbars-rs-food">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="admin_dashboard.php">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
-          <button id="darkModeToggle" class="btn btn-dark btn-sm px-2 py-1">🌓</button>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Manage Staff</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage Staff - FlowerCaféXpress</title>
+
+  <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/custom.css">
 </head>
-<body class="container mt-4">
-<h2 class="mb-4">👨‍🍳 Manage Staff</h2>
+<body>
+<?php include '../includes/header.php'; ?>
 
-<?php if (isset($_GET['success'])): ?>
-  <div class="alert alert-success">✅ Staff added successfully!</div>
-<?php elseif (isset($_GET['updated'])): ?>
-  <div class="alert alert-info">✅ Staff updated successfully!</div>
-<?php elseif (isset($_GET['deleted'])): ?>
-  <div class="alert alert-danger">🗑️ Staff deleted!</div>
-<?php endif; ?>
-
-<!-- Add New Staff -->
-<form method="POST" class="mb-4 border p-3 rounded bg-light shadow-sm">
-  <h4>Add New Staff</h4>
-  <div class="form-row">
-    <div class="form-group col-md-3">
-      <label>Email</label>
-      <input type="email" name="email" class="form-control" required>
-    </div>
-    <div class="form-group col-md-3">
-      <label>Full Name</label>
-      <input type="text" name="name" class="form-control" required>
-    </div>
-    <div class="form-group col-md-3">
-      <label>Phone</label>
-      <input type="text" name="phone" class="form-control" required>
-    </div>
-    <div class="form-group col-md-3">
-      <label>Position</label>
-      <input type="text" name="position" class="form-control">
+<div class="all-page-title page-breadcrumb">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Manage Staff</h1>
+      </div>
     </div>
   </div>
-  <div class="form-row">
-    <div class="form-group col-md-3">
-      <label>Date Joined</label>
-      <input type="date" name="date_joined" class="form-control" required>
+</div>
+
+<div class="container py-5">
+  <?php if (isset($_GET['success'])): ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <i class="fa fa-check-circle mr-2"></i> Staff member registered successfully!
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
-    <div class="form-group col-md-3">
-      <label>Password</label>
-      <input type="text" name="password" class="form-control" required>
+  <?php elseif (isset($_GET['updated'])): ?>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+      <i class="fa fa-info-circle mr-2"></i> Staff profile updated successfully!
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
-    <div class="form-group col-md-3">
-      <label>Role</label>
-      <select name="role" class="form-control" required>
-        <option value="staff">Staff</option>
-        <option value="admin">Admin</option>
-      </select>
+  <?php elseif (isset($_GET['deleted'])): ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <i class="fa fa-trash-o mr-2"></i> Staff member deleted.
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <?php endif; ?>
+
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+    <div>
+      <h2 class="font-weight-bold mb-1">Staff Team Directory</h2>
+      <p class="text-muted mb-0">Register kitchen and counter staff or modify team permissions.</p>
+    </div>
+    <div class="mt-3 mt-sm-0">
+      <a href="admin_dashboard.php" class="btn btn-outline-theme">
+        <i class="fa fa-arrow-left mr-1"></i> Dashboard
+      </a>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">➕ Add Staff</button>
-</form>
 
-<!-- Staff List -->
-<h4>📋 Staff List</h4>
-<table class="table table-bordered table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th>Email</th>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Role</th>
-      <th>Position</th>
-      <th>Date Joined</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php while($row = $result->fetch_assoc()): ?>
-    <tr>
-      <td><?= htmlspecialchars($row['email']) ?></td>
-      <td><?= htmlspecialchars($row['name']) ?></td>
-      <td><?= htmlspecialchars($row['phone']) ?></td>
-      <td><?= htmlspecialchars($row['role']) ?></td>
-      <td><?= htmlspecialchars($row['position']) ?></td>
-      <td><?= htmlspecialchars($row['date_joined']) ?></td>
-      <td>
-        <button class="btn btn-warning btn-sm" onclick='showEditModal(<?= json_encode($row) ?>)'>Edit</button>
-        <a href="?delete=<?= $row['user_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Delete this staff?')">Delete</a>
-      </td>
-    </tr>
-    <?php endwhile; ?>
-  </tbody>
-</table>
+  <!-- Add New Staff Card -->
+  <div class="card shadow-sm border-0 mb-5">
+    <div class="card-header bg-transparent border-bottom p-4">
+      <h5 class="mb-0 font-weight-bold" style="color: var(--fc-primary);">
+        <i class="fa fa-user-plus mr-2"></i> Register New Staff Member
+      </h5>
+    </div>
+    <div class="card-body p-4">
+      <form method="POST">
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label class="font-weight-bold">Email Address</label>
+            <input type="email" name="email" class="form-control" required placeholder="staff@flowercafe.com">
+          </div>
+          <div class="form-group col-md-3">
+            <label class="font-weight-bold">Full Name</label>
+            <input type="text" name="name" class="form-control" required placeholder="Staff Name">
+          </div>
+          <div class="form-group col-md-3">
+            <label class="font-weight-bold">Phone Number</label>
+            <input type="text" name="phone" class="form-control" required placeholder="017-xxxxxxx">
+          </div>
+          <div class="form-group col-md-3">
+            <label class="font-weight-bold">Position</label>
+            <input type="text" name="position" class="form-control" placeholder="e.g. Chef, Barista, Cashier">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label class="font-weight-bold">Date Joined</label>
+            <input type="date" name="date_joined" class="form-control" required value="<?= date('Y-m-d') ?>">
+          </div>
+          <div class="form-group col-md-4">
+            <label class="font-weight-bold">Initial Password</label>
+            <input type="text" name="password" class="form-control" required placeholder="Secure temporary password">
+          </div>
+          <div class="form-group col-md-4">
+            <label class="font-weight-bold">System Role</label>
+            <select name="role" class="form-control" required>
+              <option value="staff">Staff (Kitchen / Orders)</option>
+              <option value="admin">Administrator (Full Access)</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-right mt-2">
+          <button type="submit" class="btn btn-primary">
+            <i class="fa fa-plus-circle mr-1"></i> Add Staff Member
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 
-<!-- Edit Modal -->
+  <!-- Staff List Table -->
+  <div class="card shadow-sm border-0">
+    <div class="card-header bg-transparent border-bottom p-4">
+      <h5 class="mb-0 font-weight-bold">
+        <i class="fa fa-users mr-2" style="color: var(--fc-primary);"></i> Active Staff Roster
+      </h5>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead class="thead-dark">
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Role</th>
+              <th>Position</th>
+              <th>Date Joined</th>
+              <th style="width: 170px;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if ($result && $result->num_rows > 0): ?>
+              <?php while($row = $result->fetch_assoc()): ?>
+              <tr>
+                <td class="font-weight-bold"><?= htmlspecialchars($row['name']) ?></td>
+                <td><?= htmlspecialchars($row['email']) ?></td>
+                <td>
+                  <a href="tel:<?= htmlspecialchars($row['phone']) ?>" class="text-decoration-none">
+                    <i class="fa fa-phone mr-1 text-muted"></i> <?= htmlspecialchars($row['phone']) ?>
+                  </a>
+                </td>
+                <td>
+                  <span class="badge badge-warning role-badge text-uppercase"><?= htmlspecialchars($row['role']) ?></span>
+                </td>
+                <td><?= htmlspecialchars($row['position'] ?: 'Staff') ?></td>
+                <td class="text-muted small">
+                  <?= $row['date_joined'] ? date('d M Y', strtotime($row['date_joined'])) : 'N/A' ?>
+                </td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary mr-1" onclick='showEditModal(<?= json_encode($row) ?>)'>
+                    <i class="fa fa-pencil"></i> Edit
+                  </button>
+                  <a href="?delete=<?= $row['user_id'] ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this staff member?')">
+                    <i class="fa fa-trash"></i> Delete
+                  </a>
+                </td>
+              </tr>
+              <?php endwhile; ?>
+            <?php else: ?>
+              <tr><td colspan="7" class="text-center py-4 text-muted">No staff accounts registered.</td></tr>
+            <?php endif; ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Staff Modal -->
 <div class="modal fade" id="editStaffModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
     <form method="POST" class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Edit Staff</h5>
+        <h5 class="modal-title font-weight-bold">Edit Staff Profile</h5>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body p-4">
         <input type="hidden" name="user_id" id="edit_user_id">
         <div class="form-row">
           <div class="form-group col-md-4">
-            <label>Email</label>
+            <label class="font-weight-bold">Email Address</label>
             <input type="email" name="email" id="edit_email" class="form-control" required>
           </div>
           <div class="form-group col-md-4">
-            <label>Name</label>
+            <label class="font-weight-bold">Full Name</label>
             <input type="text" name="name" id="edit_name" class="form-control" required>
           </div>
           <div class="form-group col-md-4">
-            <label>Phone</label>
+            <label class="font-weight-bold">Phone Number</label>
             <input type="text" name="phone" id="edit_phone" class="form-control" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-3">
-            <label>Position</label>
+            <label class="font-weight-bold">Position</label>
             <input type="text" name="position" id="edit_position" class="form-control">
           </div>
           <div class="form-group col-md-3">
-            <label>Date Joined</label>
+            <label class="font-weight-bold">Date Joined</label>
             <input type="date" name="date_joined" id="edit_date_joined" class="form-control">
           </div>
           <div class="form-group col-md-3">
-            <label>New Password (optional)</label>
-            <input type="text" name="password" class="form-control">
+            <label class="font-weight-bold">New Password</label>
+            <input type="text" name="password" class="form-control" placeholder="Leave blank to keep">
           </div>
           <div class="form-group col-md-3">
-            <label>Role</label>
+            <label class="font-weight-bold">Role</label>
             <select name="role" id="edit_role" class="form-control" required>
               <option value="staff">Staff</option>
               <option value="admin">Admin</option>
@@ -227,15 +287,16 @@ $result = $conn->query("
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">💾 Save Changes</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
       </div>
     </form>
   </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<?php include '../includes/footer.php'; ?>
+<?php include '../includes/scripts.php'; ?>
+
 <script>
 function showEditModal(data) {
   document.getElementById('edit_user_id').value = data.user_id;
